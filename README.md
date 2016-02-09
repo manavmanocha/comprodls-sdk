@@ -70,10 +70,12 @@ Following is sample code to get list of all products for a user:
 // Load the comproDLS SDK
 var comproDLS = require('comprodls-sdk');
 
-//Get access token using SDK
+//GET call to get all products of a user
 comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {}).then(
     function success(response) {
-          
+        //response is array of products
+        var firstProductId = response.data[0]['uuid'];
+        var firstProductName = response.data[0]['name'];
     }, 
     function error(errorObject) {
          //Do Error handling here
@@ -88,9 +90,15 @@ Following is sample code to post a message in a group:
 var comproDLS = require('comprodls-sdk');
 
 //Get access token using SDK
-comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {}).then(
+comproDLS.request('POST', '/org1/post/products/c4aeb8a4-bc18-11e5-8032-c138b3313eb4', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {
+    'post':"This is the text", //body of the post
+    'name':'student1', //name of the user
+    'userid':'7b7c4568-71b1-11e5-b98b-33c9b55e28c2', //userId 
+    'verb':'post'
+}).then(
     function success(response) {
-          
+        //response is the content of the post
+        var textOfPost = response.data[0]['entity']['content']; 
     }, 
     function error(errorObject) {
          //Do Error handling here
