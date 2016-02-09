@@ -22,7 +22,7 @@ bower install comprodls-sdk
 
 
 ### Loading the SDK
-After you've installed the SDK, you can require the comproDLS package in your node application using require():
+After you've installed the SDK, you can require the comproDLS package in your application using require():
 ```
 var comproDLS = require('comprodls-sdk');
 ```
