@@ -32,10 +32,13 @@ bower install comprodls-sdk
 ## Usage
 ### Loading the SDK
 #### In Browser
-After you've installed the SDK, you can create the comproDLS object as follows:
+If you are using AMD modules in your application, you can get comproDLS package as follows:
 ```
-var comproDLS = new comproDLS();
+define(["comprodls-sdk"], function(comproDLS) {
+    //comproDLS object is avaialable here
+});
 ```
+If you are not using AMD modules, "comproDLS" object is avaialable in window itself.
 #### In Node.js
 After you've installed the SDK, you can require the comproDLS package in your application using require():
 ```
