@@ -22,6 +22,12 @@ bower install comprodls-sdk
 
 
 ### Loading the SDK
+#### In the Browser
+After you've installed the SDK, you can create the comproDLS object as follows:
+```
+var comproDLS = new comproDLS();
+```
+#### In Node.js
 After you've installed the SDK, you can require the comproDLS package in your application using require():
 ```
 var comproDLS = require('comprodls-sdk');
