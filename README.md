@@ -47,7 +47,13 @@ var comproDLS = require('comprodls-sdk');
 ### Get Access token
 Use *getAccessToken* function to get a valid access token. Following is sample code:
 ```
-//Get access token using SDK
+/***
+* Get access token using SDK
+* Example Parameters
+*      organisationid: org1
+*      username: student1
+*      password: mypassword
+**/
 comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
     function success(response) {
           var access_token = response.access_token;
@@ -63,7 +69,14 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 Use *request* function to call any comproDLS API. 
 Following is sample code to get list of all products for a user:
 ```
-//GET call to get all products of a user
+/***
+* Get all products of a user using SDK
+* Example Parameters
+*      method: GET
+*      url: org1/users/me/products
+*      accesstooken: YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb
+*      params: {} (Empty object)
+**/
 comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {}).then(
     function success(response) {
         //response is array of products
@@ -77,9 +90,21 @@ comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAA
 ```
 
 
-Following is sample code to post a message in a group:
+Following is sample code to post a message in a product feed:
 ```
-//Get access token using SDK
+/***
+* Posts a message in product feed
+* Example Parameters
+*      method: POST
+*      url: /org1/post/products/c4aeb8a4-bc18-11e5-8032-c138b3313eb4
+*      accesstooken: YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb
+*      params:  {
+*            'post':"This is the text", //body of the post
+*            'name':'student1', //name of the user
+*            'userid':'7b7c4568-71b1-11e5-b98b-33c9b55e28c2', //userId 
+*            'verb':'post'
+*        }
+**/
 comproDLS.request('POST', '/org1/post/products/c4aeb8a4-bc18-11e5-8032-c138b3313eb4', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {
     'post':"This is the text", //body of the post
     'name':'student1', //name of the user
