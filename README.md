@@ -4,8 +4,8 @@ Get started quickly using comproDLS APIs with comproDLS SDK for Javascript. The 
 
 ## Getting Started
 ### Installation
-#### In the Browser
-To use the SDK in the browser, simply add the following script tag to your HTML pages:
+#### In Browser
+To use the SDK in browser, simply add the following script tag to your HTML pages:
 ```
 <script src="..."></script>
 ```
@@ -22,7 +22,7 @@ bower install comprodls-sdk
 
 
 ### Loading the SDK
-#### In the Browser
+#### In Browser
 After you've installed the SDK, you can create the comproDLS object as follows:
 ```
 var comproDLS = new comproDLS();
