@@ -1,5 +1,5 @@
 # comproDLS SDK for Javascript
-The official comproDLS SDK for JavaScript, available for browsers and Node.js backends. It provides JavaScript objects and functions to access comproDLS Services/APIs in your application. 
+The official comproDLS SDK for JavaScript, available for browsers and Node.js backends. It provides JavaScript objects and functions to access comproDLS APIs in your application. 
 
 ## Key Concepts
 
@@ -32,7 +32,7 @@ bower install comprodls-sdk
 ## Usage
 ### Loading the SDK
 #### In Browser
-If you are using AMD modules in your application, you can get comproDLS package as follows:
+If you are using AMD modules in your application, following is preferred way to get comproDLS module:
 ```
 define(["comprodls-sdk"], function(comproDLS) {
     //comproDLS object is avaialable here
@@ -40,23 +40,23 @@ define(["comprodls-sdk"], function(comproDLS) {
 ```
 If you are not using AMD modules, "comproDLS" object is avaialable in window itself.
 #### In Node.js
-After you've installed the SDK, you can require the comproDLS package in your application using require():
+After you've installed the SDK, you can require the comproDLS module in your application using require():
 ```
 var comproDLS = require('comprodls-sdk');
 ```
-### Get Access token
-Use *getAccessToken* function to get a valid access token. Following is sample code:
+### Getting Access token
+Use *getAccessToken* function to get a access token. Following is sample code:
 ```
 /***
 * Get access token using SDK
-* Example Parameters
+* Parameters
 *      organisationid: org1
 *      username: student1
 *      password: mypassword
 **/
 comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
     function success(response) {
-          //Persist access_token to use it in subsequent calls
+          //You need to persist access_token to use it in subsequent calls
           var access_token = response.access_token;
           
           //Access token will be expired after this time
@@ -68,6 +68,9 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
     }, 
     function error(errorObject) {
          //Do Error handling here
+         var statuscode = errorObject.status-code;
+         var errormessage = errorObject.message;
+         console.log(errormessage);
     }
 );
 ```
@@ -75,7 +78,7 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 Application which is using comproDLS SDK needs to persist this access token as this will be used in subsequent calls to comproDLS services/APIs. See [getAccessToken API Documentation](https://github.com/manavmanocha/comprodls-sdk/blob/master/README.md#getaccesstoken) for detailed information on parameters, response JSON structure.
 
 ### Request API
-comproDLS SDK exposes a *request* function to call any comproDLS service/API. Following are some samples for using requet function
+comproDLS SDK exposes a *request* function to call any comproDLS service/API. Following are some samples for using request function
 
 Sample code to get list of all products for a user:
 ```
@@ -198,10 +201,10 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 );
 ```
 
-###request
+## request
 ToDo
 
-###refreshAccessToken
+## refreshAccessToken
 ToDo
 
 
