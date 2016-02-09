@@ -4,10 +4,23 @@ Get started quickly using comproDLS APIs with comproDLS SDK for Javascript. The 
 
 ## Getting Started
 ### Installation
-To install the SDK, simply type the following into a terminal window:
+#### In the Browser
+To use the SDK in the browser, simply add the following script tag to your HTML pages:
+```
+<script src="..."></script>
+```
+#### In Node.js
+The preferred way to install the SDK for Node.js is to use the [npm](https://www.npmjs.com/) package manager for Node.js. Simply type the following into a terminal window:
 ```
 npm install comprodls-sdk
 ```
+#### Using Bower
+You can also use [Bower](http://bower.io/) to install the SDK by typing the following into a terminal window:
+```
+bower install comprodls-sdk
+```
+
+
 ### Loading the SDK
 After you've installed the SDK, you can require the comproDLS package in your node application using require():
 ```
@@ -24,4 +37,13 @@ comproDLS uses a token based authentication mechanism i.e it allows users to ent
 ### Access token expiry
 Access token is valid for limited time and expires after that time. An expired token can not be used to access protected comproDLS resources/APIs. You need to refresh access token after expiry. The method to refresh access token is explained in Usage section.
 
-
+## Usage
+### Get Access token
+Use *getAccessToken* function to get a valid access token. Following is sample code:
+```
+// Load the comproDLS SDK
+var comproDLS = require('comprodls-sdk');
+comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(function success(response) {
+}, function error(errorObject) {
+});
+```
