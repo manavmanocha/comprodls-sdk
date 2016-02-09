@@ -187,6 +187,7 @@ This function is used to get access token.
 "description":"",       // Description of error
 "message":"",           // Error message
 }
+```
 
 ####Example
 ```
