@@ -56,8 +56,15 @@ Use *getAccessToken* function to get a valid access token. Following is sample c
 **/
 comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
     function success(response) {
-          var access_token = response.access_token;
           //Persist access_token to use it in subsequent calls
+          var access_token = response.access_token;
+          
+          //Access token will be expired after this time
+          var expires_in = response.expires_in;
+          
+          //This will be used later to refresh expired token
+          var refresh_token = response.refresh_token;
+         
     }, 
     function error(errorObject) {
          //Do Error handling here
@@ -65,7 +72,7 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 );
 ```
 
-Application which is using comproDLS SDK needs to persist this access token as this will be used in subsequent calls to comproDLS services/APIs. See [API Documentation] for detailed information on parameters, response JSON structure.
+Application which is using comproDLS SDK needs to persist this access token as this will be used in subsequent calls to comproDLS services/APIs. See [getAccessToken API Documentation](https://github.com/manavmanocha/comprodls-sdk/blob/master/README.md#getaccesstoken) for detailed information on parameters, response JSON structure.
 
 ### Request API
 comproDLS SDK exposes a *request* function to call any comproDLS service/API. Following are some samples for using requet function
@@ -123,6 +130,33 @@ comproDLS.request('POST', '/org1/post/products/c4aeb8a4-bc18-11e5-8032-c138b3313
     }
 );
 ```
+### Refresh Access token
+Access token received via getAccessToken function expires after some time. You need to refresh access token after it gets expired. Following is sample code to refresh access token 
+```
+/***
+* Refresh access token using SDK
+* Example Parameters
+*      organisationid: org1
+*      username: student1
+*      password: mypassword
+**/
+comproDLS.refreshAccessToken('org1', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', 'd212ca7c0926729a227aa3e26b1e11f4d6a70050378fb8e271262219611c6a9f4c8ff264a07ec33088a729ed3c28d703c94ddf3f7ec50a1cd08e80b557ea15ab7894a7d0034bfad0cfd6864ab870c7dbf4d398').then(
+    function success(response) {
+         //Persist access_token to use it in subsequent calls
+          var access_token = response.access_token;
+          
+          //Access token will be expired after this time
+          var expires_in = response.expires_in;
+          
+          //This will be used later to refresh expired token
+          var refresh_token = response.refresh_token;
+    }, 
+    function error(errorObject) {
+         //Do Error handling here
+    }
+);
+```
+
 
 ## API in Detail
 
@@ -163,6 +197,12 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
     }
 );
 ```
+
+###request
+ToDo
+
+###refreshAccessToken
+ToDo
 
 
 
