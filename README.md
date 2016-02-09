@@ -65,7 +65,7 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 );
 ```
 
-Application which is using comproDLS SDK needs to persist this access token as this will be used in subsequent calls to comproDLS services/APIs.
+Application which is using comproDLS SDK needs to persist this access token as this will be used in subsequent calls to comproDLS services/APIs. See [API Documentation] for detailed information on parameters, response JSON structure.
 
 ### Request API
 comproDLS SDK exposes a *request* function to call any comproDLS service/API. Following are some samples for using requet function
@@ -123,4 +123,46 @@ comproDLS.request('POST', '/org1/post/products/c4aeb8a4-bc18-11e5-8032-c138b3313
     }
 );
 ```
+
+## API in Detail
+
+###getAccessToken
+This function is used to get access token.
+#### Parameters
+* organisationid: comproDLS organisation id e.g. cdev6
+* username: comproDLS username
+* password: password
+#### Success Response Structure
+```
+{
+"userid":"...",         // comproDLS user id
+"name":"...",           // User name
+"orgid":"...",          // Organisation id
+"expires_in":"...",     // Token expiry time, token gets expired after this time. You need to refresh token after expiry
+"access_token":"...",   // Access token
+"refresh_token":"..."   // Refresh token, this will be used to refresh access token
+}
+```
+#### Error Response Structure
+```
+{
+"status-code":"",       // HTTP status code
+"description":"",       // Description of error
+"message":"",           // Error message
+}
+
+####Example
+```
+comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
+    function success(response) {
+          var access_token = response.access_token;
+          //Persist access_token to use it in subsequent calls
+    }, 
+    function error(errorObject) {
+         //Do Error handling here
+    }
+);
+```
+
+
 
