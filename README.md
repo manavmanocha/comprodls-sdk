@@ -65,9 +65,12 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 );
 ```
 
+Application which is using comproDLS SDK needs to persist this access token as this will be used in subsequent calls to comproDLS services/APIs.
+
 ### Request API
-Use *request* function to call any comproDLS API. 
-Following is sample code to get list of all products for a user:
+comproDLS SDK exposes a *request* function to call any comproDLS service/API. Following are some samples for using requet function
+
+Sample code to get list of all products for a user:
 ```
 /***
 * Get all products of a user using SDK
@@ -90,7 +93,7 @@ comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAA
 ```
 
 
-Following is sample code to post a message in a product feed:
+Sample code to post a message in a product feed:
 ```
 /***
 * Posts a message in product feed
