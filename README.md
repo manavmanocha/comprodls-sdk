@@ -47,9 +47,6 @@ var comproDLS = require('comprodls-sdk');
 ### Get Access token
 Use *getAccessToken* function to get a valid access token. Following is sample code:
 ```
-// Load the comproDLS SDK
-var comproDLS = require('comprodls-sdk');
-
 //Get access token using SDK
 comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
     function success(response) {
@@ -66,9 +63,6 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 Use *request* function to call any comproDLS API. 
 Following is sample code to get list of all products for a user:
 ```
-// Load the comproDLS SDK
-var comproDLS = require('comprodls-sdk');
-
 //GET call to get all products of a user
 comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {}).then(
     function success(response) {
@@ -85,9 +79,6 @@ comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAA
 
 Following is sample code to post a message in a group:
 ```
-// Load the comproDLS SDK
-var comproDLS = require('comprodls-sdk');
-
 //Get access token using SDK
 comproDLS.request('POST', '/org1/post/products/c4aeb8a4-bc18-11e5-8032-c138b3313eb4', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {
     'post':"This is the text", //body of the post
