@@ -1,4 +1,5 @@
 # comproDLS SDK for Javascript
+The official comproDLS SDK for JavaScript, available for browsers and Node.js backends.
 
 Get started quickly using comproDLS APIs with comproDLS SDK for Javascript. The SDK helps take the complexity out of coding by providing JavaScript objects and functions for using comproDLS services.
 
@@ -49,7 +50,51 @@ Use *getAccessToken* function to get a valid access token. Following is sample c
 ```
 // Load the comproDLS SDK
 var comproDLS = require('comprodls-sdk');
-comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(function success(response) {
-}, function error(errorObject) {
-});
+
+//Get access token using SDK
+comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
+    function success(response) {
+          var access_token = response.access_token;
+          //Persist access_token to use it in subsequent calls
+    }, 
+    function error(errorObject) {
+         //Do Error handling here
+    }
+);
 ```
+
+### Request API
+Use *request* function to call any comproDLS API. 
+Following is sample code to get list of all products for a user:
+```
+// Load the comproDLS SDK
+var comproDLS = require('comprodls-sdk');
+
+//Get access token using SDK
+comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {}).then(
+    function success(response) {
+          
+    }, 
+    function error(errorObject) {
+         //Do Error handling here
+    }
+);
+```
+
+
+Following is sample code to post a message in a group:
+```
+// Load the comproDLS SDK
+var comproDLS = require('comprodls-sdk');
+
+//Get access token using SDK
+comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {}).then(
+    function success(response) {
+          
+    }, 
+    function error(errorObject) {
+         //Do Error handling here
+    }
+);
+```
+
