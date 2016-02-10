@@ -204,6 +204,7 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 
 ## request
 This function is used to make http calls to comproDLS API.
+
 #### Parameters
 * method: http method (e.g. "GET") 
 * url: url of the API call
@@ -238,6 +239,7 @@ comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAA
 
 ## refreshAccessToken
  This function is used to get referesh access token after the access token has expired.
+ 
  #### Parameters
 * organisationid: comproDLS organisation id e.g. cdev6
 * expiredToken : old comproDLS access token value
