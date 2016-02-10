@@ -206,7 +206,7 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 This function is used to make http calls to comproDLS API.
 #### Parameters
 * method: http method (e.g. "GET") 
-* url: url of the call
+* url: url of the API call
 * accesstoken: comproDLS access token 
 * params: entity body for PATCH, POST and PUT requests.
 
