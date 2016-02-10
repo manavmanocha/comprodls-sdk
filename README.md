@@ -165,9 +165,9 @@ comproDLS.refreshAccessToken('org1', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk
 ###getAccessToken
 This function is used to get access token.
 #### Parameters
-* organisationid: comproDLS organisation id e.g. cdev6
-* username: comproDLS username
-* password: password
+* **organisationid**: comproDLS organisation id e.g. cdev6
+* **username**: comproDLS username
+* **password**: password
 
 #### Success Response Structure
 ```
@@ -206,13 +206,13 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 This function is used to make http calls to comproDLS API.
 
 #### Parameters
-* method: http method (e.g. "GET") 
-* url: url of the API call
-* accesstoken: comproDLS access token 
-* params: entity body for PATCH, POST and PUT requests.
+* **method**: http method (e.g. GET , POST , PUT , DELETE) 
+* **url**: url of the API call
+* **accesstoken**: comproDLS access token 
+* **params**: entity body for POST and PUT requests.
 
 #### Success Response Structure
-    This is the response body depending on the API call.
+    This is the JSON response of ComproDLS API call.
     
 #### Error Response Structure
 ```
@@ -241,9 +241,9 @@ comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAA
  This function is used to get referesh access token after the access token has expired.
  
 #### Parameters
-* organisationid: comproDLS organisation id e.g. cdev6
-* expiredToken : old comproDLS access token value
-* refreshToken : old comproDLS refresh token value
+* **organisationid**: comproDLS organisation id e.g. cdev6
+* **expiredToken** : old comproDLS access token value
+* **refreshToken** : old comproDLS refresh token value
 
 #### Success Response Structure
     ```
