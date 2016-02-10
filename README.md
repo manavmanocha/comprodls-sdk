@@ -140,8 +140,8 @@ Access token received via getAccessToken function expires after some time. You n
 * Refresh access token using SDK
 * Example Parameters
 *      organisationid: org1
-*      username: student1
-*      password: mypassword
+*      expiredToken : YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb
+*      refreshToken : d212ca7c0926729a227aa3e26b1e11f4d6a70050378fb8e271262219611c6a9f4c8ff264a07ec33088a729ed3c28d703c94ddf3f7ec50a1cd08e80b557ea15ab7894a7d0034bfad0cfd6864ab870c7dbf4d398
 **/
 comproDLS.refreshAccessToken('org1', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', 'd212ca7c0926729a227aa3e26b1e11f4d6a70050378fb8e271262219611c6a9f4c8ff264a07ec33088a729ed3c28d703c94ddf3f7ec50a1cd08e80b557ea15ab7894a7d0034bfad0cfd6864ab870c7dbf4d398').then(
     function success(response) {
@@ -160,7 +160,6 @@ comproDLS.refreshAccessToken('org1', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk
 );
 ```
 
-
 ## API in Detail
 
 ###getAccessToken
@@ -169,6 +168,7 @@ This function is used to get access token.
 * organisationid: comproDLS organisation id e.g. cdev6
 * username: comproDLS username
 * password: password
+
 #### Success Response Structure
 ```
 {
@@ -203,10 +203,80 @@ comproDLS.getAccessToken('org1', 'student1', 'mypassword').then(
 ```
 
 ## request
-ToDo
+This function is used to make http calls to comproDLS API.
+#### Parameters
+* method: http method (e.g. "GET") 
+* url: url of the call
+* accesstoken: comproDLS access token 
+* params: entity body for PATCH, POST and PUT requests.
+
+#### Success Response Structure
+    This is the response body depending on the API call.
+    
+#### Error Response Structure
+```
+{
+"status-code":"",       // HTTP status code
+"description":"",       // Description of error
+"message":"",           // Error message
+}
+```
+
+####Example
+```
+comproDLS.request('GET', 'org1/users/me/products', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', {}).then(
+    function success(response) {
+        //response is array of products
+        var firstProductId = response.data[0]['uuid'];
+        var firstProductName = response.data[0]['name'];
+    }, 
+    function error(errorObject) {
+         //Do Error handling here
+    }
+);
+```
 
 ## refreshAccessToken
-ToDo
+ This function is used to get referesh access token after the access token has expired.
+ #### Parameters
+* organisationid: comproDLS organisation id e.g. cdev6
+* expiredToken : old comproDLS access token value
+* refreshToken : old comproDLS refresh token value
 
-
-
+#### Success Response Structure
+    ```
+    {
+    "userid":"...",         // comproDLS user id
+    "name":"...",           // User name
+    "orgid":"...",          // Organisation id
+    "expires_in":"...",     // Token expiry time, token gets expired after this time. You need to refresh token after expiry
+    "access_token":"...",   // NEW Access token
+    "refresh_token":"..."   // NEW Refresh token, this will be used to refresh access token
+    }
+    ```
+    
+#### Error Response Structure
+```
+{
+"status-code":"",       // HTTP status code
+"description":"",       // Description of error
+"message":"",           // Error message
+}
+```
+####Example
+```
+comproDLS.refreshAccessToken('org1', 'YWMta_x4GM8eEeWRyiUErvtXNwAAAVLpysmC7z_1zk1Fp6MF4nIQGafognqPeVE~~bc611904-a47f-11e5-bee2-930f4cf5acfb', 'd212ca7c0926729a227aa3e26b1e11f4d6a70050378fb8e271262219611c6a9f4c8ff264a07ec33088a729ed3c28d703c94ddf3f7ec50a1cd08e80b557ea15ab7894a7d0034bfad0cfd6864ab870c7dbf4d398').then(
+    function success(response) {
+         //Persist access_token to use it in subsequent calls
+          var access_token = response.access_token;
+          
+          //Access token will be expired after this time
+          var expires_in = response.expires_in;
+          
+          //This will be used later to refresh expired token
+          var refresh_token = response.refresh_token;
+    }, 
+    function error(errorObject) {
+         //Do Error handling here
+    }
+```
